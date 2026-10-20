@@ -1,0 +1,9 @@
+{
+  "name": "therapist-saas-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd unfazed-frontend && npm install && npm run build",
+    "start": "cd unfazed-backend && npm start"
+  }
+}
