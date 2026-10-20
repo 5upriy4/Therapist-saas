@@ -15,11 +15,13 @@ const Package = require('./src/models/Package');
 const ClientPackage = require('./src/models/ClientPackage');
 const Lead = require('./src/models/Lead');
 
-const seedData = async () => {
+const seedData = async (isCli = false) => {
   try {
-    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/unfazed';
-    await mongoose.connect(mongoUri);
-    console.log('[Seed] Connected to MongoDB for seeding...');
+    if (mongoose.connection.readyState !== 1) {
+      const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/unfazed';
+      await mongoose.connect(mongoUri);
+      console.log('[Seed] Connected to MongoDB for seeding...');
+    }
 
     // Clear existing collections
     console.log('[Seed] Clearing existing collections...');
@@ -504,11 +506,21 @@ const seedData = async () => {
     console.log('  Password: (Uses Quick Client Login in Portal)');
     console.log('=============================================================\n');
 
-    process.exit(0);
+    if (isCli) {
+      process.exit(0);
+    }
+    return true;
   } catch (error) {
     console.error('Error seeding data:', error);
-    process.exit(1);
+    if (isCli) {
+      process.exit(1);
+    }
+    throw error;
   }
 };
 
-seedData();
+if (require.main === module) {
+  seedData(true);
+}
+
+module.exports = seedData;

@@ -39,6 +39,23 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Database Seed endpoint for cloud deployments (MongoDB Atlas)
+app.get('/api/seed-database', async (req, res) => {
+  try {
+    const seedData = require('../seed');
+    await seedData(false);
+    return res.status(200).json({
+      success: true,
+      message: 'MongoDB Atlas database seeded successfully with Dr. Priya Sharma, clients, packages, and appointments!',
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+});
+
 // WhatsApp Notification Queue inspection route for demo / grading
 app.get('/api/notifications/whatsapp-queue', (req, res) => {
   res.json({

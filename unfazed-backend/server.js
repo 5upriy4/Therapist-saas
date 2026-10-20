@@ -9,8 +9,21 @@ const connectDB = require('./src/config/db');
 const { Server } = require('socket.io');
 const setupChatSocket = require('./src/sockets/chatSocket');
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB & Auto-seed if database is brand new
+connectDB().then(async () => {
+  try {
+    const Therapist = require('./src/models/Therapist');
+    const count = await Therapist.countDocuments();
+    if (count === 0) {
+      console.log('[Auto-Seed] Database is empty. Auto-seeding initial demo practitioners...');
+      const seedData = require('./seed');
+      await seedData(false);
+      console.log('[Auto-Seed] Auto-seeding complete.');
+    }
+  } catch (err) {
+    console.warn('[Auto-Seed] Warning:', err.message);
+  }
+});
 
 const server = http.createServer(app);
 
