@@ -71,12 +71,12 @@ const generateInvoicePDF = (payment, therapist, client) => {
 
       // Provider details (Therapist)
       doc.fontSize(10).fillColor(primaryColor).text('PROVIDER (BILLED FROM)', 40, addressTop);
-      doc.fontSize(10).fillColor(darkColor).text(therapist.name, 40, addressTop + 16);
+      doc.fontSize(10).fillColor(darkColor).text(therapist?.name || 'Therapist Practice', 40, addressTop + 16);
       doc.fontSize(9).fillColor(grayColor);
-      doc.text(therapist.title || 'Licensed Clinical Psychologist', 40, addressTop + 30);
-      doc.text(therapist.address?.clinicName || 'Therapy Practice Clinic', 40, addressTop + 44);
-      doc.text(`${therapist.address?.street || ''}, ${therapist.address?.city || ''}`, 40, addressTop + 58);
-      doc.text(`GSTIN: ${therapist.address?.gstin || '29ABCDE1234F1Z5'}`, 40, addressTop + 72);
+      doc.text(therapist?.title || 'Licensed Clinical Psychologist', 40, addressTop + 30);
+      doc.text(therapist?.address?.clinicName || 'Therapy Practice Clinic', 40, addressTop + 44);
+      doc.text(`${therapist?.address?.street || ''}, ${therapist?.address?.city || ''}`, 40, addressTop + 58);
+      doc.text(`GSTIN: ${therapist?.address?.gstin || '29ABCDE1234F1Z5'}`, 40, addressTop + 72);
 
       // Client details
       doc.fontSize(10).fillColor(primaryColor).text('BILLED TO (CLIENT)', 320, addressTop);
@@ -152,7 +152,7 @@ const generateInvoicePDF = (payment, therapist, client) => {
 
       // Footer stamp / Sign
       doc.text('Authorized Signatory', 430, footerTop + 65, { align: 'right', width: 120 });
-      doc.text(`${therapist.name}`, 430, footerTop + 78, { align: 'right', width: 120 });
+      doc.text(`${therapist?.name || 'Therapist'}`, 430, footerTop + 78, { align: 'right', width: 120 });
 
       doc.end();
     } catch (err) {

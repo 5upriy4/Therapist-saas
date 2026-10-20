@@ -5,7 +5,7 @@ let razorpayInstance = null;
 const keyId = process.env.RAZORPAY_KEY_ID;
 const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
-if (keyId && keySecret && !keyId.includes('your_razorpay')) {
+if (keyId && keySecret && !keyId.includes('your_razorpay') && !keyId.includes('demo')) {
   try {
     razorpayInstance = new Razorpay({
       key_id: keyId,
