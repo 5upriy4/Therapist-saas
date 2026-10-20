@@ -77,6 +77,13 @@ app.use('/api/analytics', analyticsRoutes);
 
 // Root API Overview & Status Dashboard
 app.get('/', (req, res) => {
+  const isHttpUrl =
+    process.env.CLIENT_URL &&
+    (process.env.CLIENT_URL.startsWith('http://') || process.env.CLIENT_URL.startsWith('https://'));
+  const frontendUrl = isHttpUrl
+    ? process.env.CLIENT_URL
+    : 'https://therapist-chandanar1306-5282.vercel.app';
+
   res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -126,9 +133,14 @@ app.get('/', (req, res) => {
           </a>
         </div>
 
-        <a href="${process.env.CLIENT_URL || 'https://vercel.com/dashboard'}" target="_blank" class="btn">
+        <a href="${frontendUrl}" target="_blank" class="btn">
           Open User Interface (Vercel App) &rarr;
         </a>
+        <div style="margin-top: 14px; text-align: center;">
+          <a href="https://vercel.com/dashboard" target="_blank" style="font-size: 13px; color: #0d9488; text-decoration: underline; font-weight: 600;">
+            Go to Vercel Project Dashboard &nearr;
+          </a>
+        </div>
         <div style="margin-top: 10px; font-size: 12px; color: #64748b; text-align: center;">
           Note: Render hosts the backend API. To use the booking calendar, client portal, and practice dashboard, visit your Vercel deployment URL.
         </div>
@@ -140,6 +152,14 @@ app.get('/', (req, res) => {
     </body>
     </html>
   `);
+});
+
+// Fallback for non-API routes (redirect back to status dashboard)
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api')) {
+    return res.redirect('/');
+  }
+  next();
 });
 
 // Centralized error handling
