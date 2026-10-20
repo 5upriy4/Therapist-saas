@@ -30,7 +30,8 @@ const server = http.createServer(app);
 // Initialize Socket.io with CORS
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: true,
+    credentials: true,
     methods: ['GET', 'POST'],
   },
 });

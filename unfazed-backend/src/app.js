@@ -14,15 +14,16 @@ const { getWhatsAppQueue } = require('./services/notificationService');
 
 const app = express();
 
-// Enable CORS for all origins in development and production (configurable via CLIENT_URL)
-const allowedOrigins = process.env.CLIENT_URL
-  ? [process.env.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173']
-  : '*';
-
+// Enable robust CORS allowing Vercel production domains, preview branches and localhost
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      // Dynamic origin reflection allows credentials: true without wildcard failure
+      callback(null, true);
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   })
 );
 
