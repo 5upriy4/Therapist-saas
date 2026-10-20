@@ -75,9 +75,18 @@ const Login = () => {
 
         <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-6">
           {error && (
-            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0" />
-              <span>{error}</span>
+            <div className="p-3.5 bg-rose-50 border border-rose-200 text-rose-800 text-xs rounded-xl space-y-1">
+              <div className="flex items-center gap-2 font-semibold">
+                <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+                <span>{error}</span>
+              </div>
+              <p className="text-[11px] text-rose-600 pl-6">
+                If you haven't registered this email yet, click{' '}
+                <Link to="/register" className="underline font-bold text-rose-700">
+                  Create Therapist Account
+                </Link>{' '}
+                below, or click one of the pre-seeded demo accounts above.
+              </p>
             </div>
           )}
 

@@ -41,48 +41,63 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const loginTherapist = async (email, password) => {
-    const res = await api.post('/auth/login', { email, password });
-    if (res.data?.success) {
-      const { token, therapist } = res.data;
-      localStorage.setItem('unfazed_token', token);
-      localStorage.setItem('unfazed_user', JSON.stringify(therapist));
-      localStorage.setItem('unfazed_role', 'therapist');
-      setToken(token);
-      setUser(therapist);
-      setRole('therapist');
-      return therapist;
+    try {
+      const res = await api.post('/auth/login', { email, password });
+      if (res.data?.success) {
+        const { token, therapist } = res.data;
+        localStorage.setItem('unfazed_token', token);
+        localStorage.setItem('unfazed_user', JSON.stringify(therapist));
+        localStorage.setItem('unfazed_role', 'therapist');
+        setToken(token);
+        setUser(therapist);
+        setRole('therapist');
+        return therapist;
+      }
+      throw new Error(res.data?.error || 'Login failed');
+    } catch (err) {
+      const msg = err.response?.data?.error || err.message || 'Invalid email or password';
+      throw new Error(msg);
     }
-    throw new Error(res.data?.error || 'Login failed');
   };
 
   const registerTherapist = async (formData) => {
-    const res = await api.post('/auth/register', formData);
-    if (res.data?.success) {
-      const { token, therapist } = res.data;
-      localStorage.setItem('unfazed_token', token);
-      localStorage.setItem('unfazed_user', JSON.stringify(therapist));
-      localStorage.setItem('unfazed_role', 'therapist');
-      setToken(token);
-      setUser(therapist);
-      setRole('therapist');
-      return therapist;
+    try {
+      const res = await api.post('/auth/register', formData);
+      if (res.data?.success) {
+        const { token, therapist } = res.data;
+        localStorage.setItem('unfazed_token', token);
+        localStorage.setItem('unfazed_user', JSON.stringify(therapist));
+        localStorage.setItem('unfazed_role', 'therapist');
+        setToken(token);
+        setUser(therapist);
+        setRole('therapist');
+        return therapist;
+      }
+      throw new Error(res.data?.error || 'Registration failed');
+    } catch (err) {
+      const msg = err.response?.data?.error || err.message || 'Registration failed';
+      throw new Error(msg);
     }
-    throw new Error(res.data?.error || 'Registration failed');
   };
 
   const loginClient = async (email, therapistSlug) => {
-    const res = await api.post('/auth/client-login', { email, therapistSlug });
-    if (res.data?.success) {
-      const { token, client } = res.data;
-      localStorage.setItem('unfazed_token', token);
-      localStorage.setItem('unfazed_user', JSON.stringify(client));
-      localStorage.setItem('unfazed_role', 'client');
-      setToken(token);
-      setUser(client);
-      setRole('client');
-      return client;
+    try {
+      const res = await api.post('/auth/client-login', { email, therapistSlug });
+      if (res.data?.success) {
+        const { token, client } = res.data;
+        localStorage.setItem('unfazed_token', token);
+        localStorage.setItem('unfazed_user', JSON.stringify(client));
+        localStorage.setItem('unfazed_role', 'client');
+        setToken(token);
+        setUser(client);
+        setRole('client');
+        return client;
+      }
+      throw new Error(res.data?.error || 'Client lookup failed');
+    } catch (err) {
+      const msg = err.response?.data?.error || err.message || 'Client lookup failed';
+      throw new Error(msg);
     }
-    throw new Error(res.data?.error || 'Client lookup failed');
   };
 
   const logout = () => {

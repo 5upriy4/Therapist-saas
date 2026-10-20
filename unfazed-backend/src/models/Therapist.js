@@ -105,8 +105,4 @@ const therapistSchema = new mongoose.Schema(
   }
 );
 
-// Indexes
-therapistSchema.index({ slug: 1 });
-therapistSchema.index({ email: 1 });
-
 module.exports = mongoose.model('Therapist', therapistSchema);
