@@ -14,16 +14,6 @@ const saveNote = async (req, res, next) => {
     const therapistId = req.therapist._id;
     const { noteId, sessionId, clientId, type = 'private', template = 'freeform', title, content, structuredFields } = req.body;
 
-    if (!sessionId || !clientId) {
-      return res.status(400).json({ success: false, error: 'Session ID and Client ID are required' });
-    }
-
-    // Verify session belongs to therapist
-    const session = await Session.findOne({ _id: sessionId, therapist_id: therapistId });
-    if (!session) {
-      return res.status(404).json({ success: false, error: 'Session not found or unauthorized' });
-    }
-
     // Centralized Entitlement Check for structured clinical templates (SOAP / DAP)
     if (template !== 'freeform') {
       const check = await canAccess(therapistId, 'NOTE_TEMPLATE', { template });
@@ -35,6 +25,16 @@ const saveNote = async (req, res, next) => {
           requiredTier: 'Growth or Practice Tier',
         });
       }
+    }
+
+    if (!sessionId || !clientId) {
+      return res.status(400).json({ success: false, error: 'Session ID and Client ID are required' });
+    }
+
+    // Verify session belongs to therapist
+    const session = await Session.findOne({ _id: sessionId, therapist_id: therapistId });
+    if (!session) {
+      return res.status(404).json({ success: false, error: 'Session not found or unauthorized' });
     }
 
     let note = null;
