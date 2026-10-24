@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
+import { getSocketURL } from '../../api/axiosInstance';
 import Button from '../common/Button';
 import { Send, MessageSquare, Check, CheckCheck, User } from 'lucide-react';
 
@@ -25,13 +26,7 @@ const ChatWindow = ({ currentUser, partnerUser, roomName }) => {
 
   useEffect(() => {
     // Connect to Socket.io backend server
-    const socketServerUrl =
-      import.meta.env.VITE_SOCKET_URL ||
-      (typeof window !== 'undefined' &&
-      window.location.hostname !== 'localhost' &&
-      window.location.hostname !== '127.0.0.1'
-        ? 'https://unfazed-backend-dphs.onrender.com'
-        : 'http://localhost:5000');
+    const socketServerUrl = getSocketURL();
     const socket = io(socketServerUrl, {
       transports: ['websocket', 'polling'],
     });
