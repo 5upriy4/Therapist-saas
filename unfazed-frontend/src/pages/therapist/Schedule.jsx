@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../api/axiosInstance';
 import Button from '../../components/common/Button';
 import Loader from '../../components/common/Loader';
-import { Calendar, Clock, Save, Plus, Trash2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Calendar, Clock, Save, CheckCircle2, AlertCircle } from 'lucide-react';
 
 const Schedule = () => {
   const [loading, setLoading] = useState(true);
@@ -98,7 +98,7 @@ const Schedule = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-            <Calendar className="w-6 h-6 text-teal-600" />
+            <Calendar className="w-6 h-6 text-blue-600" />
             <span>Practice Availability & Buffer Management</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -112,23 +112,23 @@ const Schedule = () => {
       </div>
 
       {successMsg && (
-        <div className="p-4 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-200 text-xs sm:text-sm font-medium flex items-center gap-2">
-          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+        <div className="p-4 bg-blue-50 text-blue-900 rounded-2xl border border-blue-200 text-xs sm:text-sm font-medium flex items-center gap-2">
+          <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
           <span>{successMsg}</span>
         </div>
       )}
 
       {errorMsg && (
-        <div className="p-4 bg-rose-50 text-rose-800 rounded-xl border border-rose-200 text-xs sm:text-sm font-medium flex items-center gap-2">
+        <div className="p-4 bg-rose-50 text-rose-800 rounded-2xl border border-rose-200 text-xs sm:text-sm font-medium flex items-center gap-2">
           <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
           <span>{errorMsg}</span>
         </div>
       )}
 
       {/* Buffer & Duration Settings Card */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-5">
+      <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-5">
         <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-          <Clock className="w-5 h-5 text-teal-600" />
+          <Clock className="w-5 h-5 text-blue-600" />
           <span>Slot Timing & Buffer Controls</span>
         </h3>
 
@@ -147,9 +147,9 @@ const Schedule = () => {
                   key={mins}
                   type="button"
                   onClick={() => setAvailability({ ...availability, bufferTime: mins })}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                     availability.bufferTime === mins
-                      ? 'border-teal-600 bg-teal-600 text-white shadow-xs'
+                      ? 'border-blue-600 bg-blue-600 text-white shadow-xs'
                       : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                   }`}
                 >
@@ -179,9 +179,9 @@ const Schedule = () => {
                       const updated = isSelected ? cur.filter((x) => x !== dur) : [...cur, dur];
                       setAvailability({ ...availability, slotDurations: updated });
                     }}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                       isSelected
-                        ? 'border-teal-600 bg-teal-50 text-teal-800'
+                        ? 'border-blue-600 bg-blue-50 text-blue-800'
                         : 'border-slate-200 text-slate-400 hover:bg-slate-50'
                     }`}
                   >
@@ -195,7 +195,7 @@ const Schedule = () => {
       </div>
 
       {/* Weekly Schedule Days */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+      <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-4">
         <h3 className="font-bold text-slate-900 text-base">Recurring Weekly Hours</h3>
 
         <div className="divide-y divide-slate-100">
@@ -210,7 +210,7 @@ const Schedule = () => {
                   id={`day_${day.dayOfWeek}`}
                   checked={day.enabled}
                   onChange={() => handleDayToggle(day.dayOfWeek)}
-                  className="w-4 h-4 text-teal-600 rounded-sm focus:ring-teal-500 border-slate-300 cursor-pointer"
+                  className="w-4 h-4 text-blue-600 rounded-md focus:ring-blue-500 border-slate-300 cursor-pointer"
                 />
                 <label
                   htmlFor={`day_${day.dayOfWeek}`}
@@ -232,7 +232,7 @@ const Schedule = () => {
                         onChange={(e) =>
                           handleSlotChange(day.dayOfWeek, sIdx, 'startTime', e.target.value)
                         }
-                        className="px-2.5 py-1.5 border border-slate-300 rounded-lg text-slate-800 font-medium focus:ring-2 focus:ring-teal-500"
+                        className="px-2.5 py-1.5 border border-slate-300 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       />
                       <span className="text-slate-400">to</span>
                       <input
@@ -241,7 +241,7 @@ const Schedule = () => {
                         onChange={(e) =>
                           handleSlotChange(day.dayOfWeek, sIdx, 'endTime', e.target.value)
                         }
-                        className="px-2.5 py-1.5 border border-slate-300 rounded-lg text-slate-800 font-medium focus:ring-2 focus:ring-teal-500"
+                        className="px-2.5 py-1.5 border border-slate-300 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       />
                     </div>
                   ))}
@@ -255,15 +255,15 @@ const Schedule = () => {
       </div>
 
       {/* Booked Sessions View */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+      <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-4">
         <h3 className="font-bold text-slate-900 text-base">Booked Sessions & Appointments</h3>
         <div className="divide-y divide-slate-100">
           {sessions.length > 0 ? (
             sessions.map((sess) => (
-              <div key={sess._id} className="py-3 flex items-center justify-between text-xs">
+              <div key={sess._id} className="py-3.5 flex items-center justify-between text-xs">
                 <div>
-                  <p className="font-semibold text-slate-900 text-sm">{sess.clientName}</p>
-                  <p className="text-slate-500">
+                  <p className="font-bold text-slate-900 text-sm">{sess.clientName}</p>
+                  <p className="text-slate-500 mt-0.5">
                     {new Date(sess.startTime).toLocaleString('en-IN', {
                       dateStyle: 'medium',
                       timeStyle: 'short',
@@ -273,12 +273,12 @@ const Schedule = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span
-                    className={`px-2.5 py-0.5 rounded-full font-semibold uppercase text-[10px] ${
+                    className={`px-3 py-0.5 rounded-full font-bold uppercase tracking-wider text-[10px] ${
                       sess.status === 'confirmed'
-                        ? 'bg-blue-50 text-blue-700'
+                        ? 'bg-blue-50 text-blue-700 border border-blue-200'
                         : sess.status === 'completed'
-                        ? 'bg-emerald-50 text-emerald-700'
-                        : 'bg-rose-50 text-rose-700'
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                        : 'bg-rose-50 text-rose-700 border border-rose-200'
                     }`}
                   >
                     {sess.status}

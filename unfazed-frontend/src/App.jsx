@@ -10,7 +10,7 @@ const AppContent = () => {
   const { upgradeModalState, openUpgradeModal, closeUpgradeModal, upgradeTier } = useEntitlement();
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50/40 text-slate-900 selection:bg-teal-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50/50 text-slate-900 selection:bg-blue-500 selection:text-white">
       <Navbar onOpenUpgradeModal={() => openUpgradeModal('NAV_PLAN_VIEW')} />
       <main className="flex-1">
         <AppRoutes />

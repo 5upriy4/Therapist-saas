@@ -3,7 +3,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recha
 
 const SessionStatusChart = ({ data }) => {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+    <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-4">
       <div>
         <h4 className="font-bold text-slate-900 text-sm sm:text-base">Session Outcomes & Adherence</h4>
         <p className="text-xs text-slate-500">Distribution across completed, no-show and active appointments</p>
@@ -20,16 +20,17 @@ const SessionStatusChart = ({ data }) => {
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color || '#0d9488'} />
+                <Cell key={`cell-${index}`} fill={entry.color || '#2563eb'} />
               ))}
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: '#1e293b',
+                backgroundColor: '#0f172a',
                 color: '#fff',
-                borderRadius: '8px',
+                borderRadius: '12px',
                 fontSize: '12px',
                 border: 'none',
+                boxShadow: '0 10px 25px -5px rgba(0,0,0,0.2)',
               }}
             />
             <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ fontSize: '11px' }} />

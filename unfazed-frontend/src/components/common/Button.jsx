@@ -13,21 +13,27 @@ const Button = ({
   ...props
 }) => {
   const base =
-    'inline-flex items-center justify-center font-medium rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
 
   const variants = {
-    primary: 'bg-teal-600 hover:bg-teal-700 text-white shadow-sm focus:ring-teal-500',
-    secondary: 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 focus:ring-slate-400',
-    outline: 'border border-teal-600 text-teal-700 hover:bg-teal-50 focus:ring-teal-500',
-    danger: 'bg-rose-600 hover:bg-rose-700 text-white focus:ring-rose-500',
-    ghost: 'text-slate-600 hover:text-slate-900 hover:bg-slate-100',
-    accent: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm focus:ring-indigo-500',
+    primary:
+      'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 focus:ring-blue-500',
+    secondary:
+      'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 hover:border-slate-300 shadow-xs active:bg-slate-100 focus:ring-slate-300',
+    outline:
+      'border-2 border-blue-600 text-blue-600 hover:bg-blue-50/70 font-semibold focus:ring-blue-500',
+    danger:
+      'bg-rose-600 hover:bg-rose-700 text-white shadow-sm hover:shadow-md focus:ring-rose-500',
+    ghost:
+      'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80',
+    accent:
+      'bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white shadow-sm hover:shadow-md focus:ring-indigo-500',
   };
 
   const sizes = {
     sm: 'text-xs px-3 py-1.5 gap-1.5',
     md: 'text-sm px-4 py-2 gap-2',
-    lg: 'text-base px-5 py-2.5 gap-2.5',
+    lg: 'text-base px-5 py-2.5 gap-2.5 font-semibold',
   };
 
   return (

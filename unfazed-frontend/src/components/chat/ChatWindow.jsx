@@ -118,19 +118,19 @@ const ChatWindow = ({ currentUser, partnerUser, roomName }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs flex flex-col h-[520px]">
+    <div className="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col h-[520px]">
       {/* Header */}
-      <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+      <div className="p-4 bg-slate-50 border-b border-slate-200/80 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-xs">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-sm shadow-blue-500/20">
             {partnerUser?.name?.charAt(0) || 'P'}
           </div>
           <div>
             <h4 className="font-bold text-slate-800 text-xs sm:text-sm">
               {partnerUser?.name || 'Chat Conversation'}
             </h4>
-            <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Live Encrypted Channel
+            <span className="text-[10px] text-blue-600 font-semibold flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" /> Live Encrypted Channel
             </span>
           </div>
         </div>
@@ -148,19 +148,19 @@ const ChatWindow = ({ currentUser, partnerUser, roomName }) => {
               <div
                 className={`max-w-[78%] rounded-2xl px-4 py-2.5 text-xs sm:text-sm shadow-2xs leading-relaxed ${
                   isMe
-                    ? 'bg-teal-600 text-white rounded-br-xs'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-xs shadow-xs'
                     : 'bg-white border border-slate-200 text-slate-800 rounded-bl-xs'
                 }`}
               >
                 {!isMe && (
-                  <span className="block text-[10px] font-bold text-teal-700 mb-0.5">
+                  <span className="block text-[10px] font-bold text-blue-700 mb-0.5">
                     {msg.senderName}
                   </span>
                 )}
                 <p>{msg.text}</p>
                 <div
                   className={`flex items-center justify-end gap-1 text-[10px] mt-1 ${
-                    isMe ? 'text-teal-100' : 'text-slate-400'
+                    isMe ? 'text-blue-100' : 'text-slate-400'
                   }`}
                 >
                   <span>
@@ -169,7 +169,7 @@ const ChatWindow = ({ currentUser, partnerUser, roomName }) => {
                       minute: '2-digit',
                     })}
                   </span>
-                  {isMe && <CheckCheck className="w-3 h-3 text-teal-200" />}
+                  {isMe && <CheckCheck className="w-3 h-3 text-blue-200" />}
                 </div>
               </div>
             </div>
@@ -177,12 +177,12 @@ const ChatWindow = ({ currentUser, partnerUser, roomName }) => {
         })}
 
         {isTyping && (
-          <div className="text-xs text-slate-400 italic flex items-center gap-1 animate-pulse">
+          <div className="text-xs text-blue-600 italic flex items-center gap-1 animate-pulse font-medium">
             <span>{typingUser} is typing</span>
             <span className="flex gap-0.5">
-              <span className="w-1 h-1 bg-slate-400 rounded-full animate-bounce" />
-              <span className="w-1 h-1 bg-slate-400 rounded-full animate-bounce delay-100" />
-              <span className="w-1 h-1 bg-slate-400 rounded-full animate-bounce delay-200" />
+              <span className="w-1 h-1 bg-blue-500 rounded-full animate-bounce" />
+              <span className="w-1 h-1 bg-blue-500 rounded-full animate-bounce delay-100" />
+              <span className="w-1 h-1 bg-blue-500 rounded-full animate-bounce delay-200" />
             </span>
           </div>
         )}
@@ -191,13 +191,13 @@ const ChatWindow = ({ currentUser, partnerUser, roomName }) => {
       </div>
 
       {/* Input Field */}
-      <form onSubmit={handleSendMessage} className="p-3 bg-white border-t border-slate-200 flex gap-2">
+      <form onSubmit={handleSendMessage} className="p-3 bg-white border-t border-slate-200/80 flex gap-2">
         <input
           type="text"
           value={inputText}
           onChange={handleInputChange}
           placeholder="Type message..."
-          className="flex-1 px-3.5 py-2 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          className="flex-1 px-3.5 py-2 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
         />
         <Button variant="primary" type="submit" size="sm" icon={Send}>
           Send

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
 import Button from '../common/Button';
 import Loader from '../common/Loader';
-import api from '../../api/axiosInstance';
+import api, { getBaseURL } from '../../api/axiosInstance';
 import {
   User,
   Calendar,
@@ -56,7 +56,7 @@ const ClientDetailModal = ({ isOpen, onClose, clientId, onOpenNoteEditor }) => {
           {/* Top Client Header Summary */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-lg">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm shadow-blue-500/25">
                 {data.client.name.charAt(0)}
               </div>
               <div>
@@ -77,7 +77,7 @@ const ClientDetailModal = ({ isOpen, onClose, clientId, onOpenNoteEditor }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs px-2.5 py-1 rounded-full font-semibold uppercase bg-teal-100 text-teal-800">
+              <span className="text-xs px-2.5 py-1 rounded-full font-semibold uppercase bg-blue-100 text-blue-800">
                 {data.client.status}
               </span>
               <Button
@@ -107,7 +107,7 @@ const ClientDetailModal = ({ isOpen, onClose, clientId, onOpenNoteEditor }) => {
                 onClick={() => setActiveTab(tab.key)}
                 className={`pb-2.5 px-3 transition-colors ${
                   activeTab === tab.key
-                    ? 'border-b-2 border-teal-600 text-teal-700'
+                    ? 'border-b-2 border-blue-600 text-blue-700 font-bold'
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
@@ -121,28 +121,28 @@ const ClientDetailModal = ({ isOpen, onClose, clientId, onOpenNoteEditor }) => {
             {activeTab === 'overview' && (
               <div className="space-y-4">
                 {/* Digital Consent Audit Record */}
-                <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200/80">
+                <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                    <span className="text-xs font-bold text-blue-900 flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-blue-700" />
                       Auditable Telehealth Consent
                     </span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-200/60 text-emerald-800 font-semibold">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-blue-200/60 text-blue-800 font-semibold">
                       VERIFIED & TIMESTAMPED
                     </span>
                   </div>
                   {data.client.consent?.agreed ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-emerald-900">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-blue-900">
                       <div>
-                        <span className="text-emerald-700 font-medium block">Timestamp:</span>
+                        <span className="text-blue-700 font-medium block">Timestamp:</span>
                         <span>{new Date(data.client.consent.timestamp).toLocaleString('en-IN')}</span>
                       </div>
                       <div>
-                        <span className="text-emerald-700 font-medium block">Consent Version:</span>
+                        <span className="text-blue-700 font-medium block">Consent Version:</span>
                         <span>{data.client.consent.consentVersion}</span>
                       </div>
                       <div>
-                        <span className="text-emerald-700 font-medium block">IP Reference:</span>
+                        <span className="text-blue-700 font-medium block">IP Reference:</span>
                         <span>{data.client.consent.ipAddress}</span>
                       </div>
                     </div>
@@ -258,7 +258,7 @@ const ClientDetailModal = ({ isOpen, onClose, clientId, onOpenNoteEditor }) => {
                       className={`p-4 rounded-xl border text-xs ${
                         n.type === 'private'
                           ? 'bg-amber-50/40 border-amber-200'
-                          : 'bg-teal-50/30 border-teal-200'
+                          : 'bg-blue-50/30 border-blue-200'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
@@ -268,7 +268,7 @@ const ClientDetailModal = ({ isOpen, onClose, clientId, onOpenNoteEditor }) => {
                             className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
                               n.type === 'private'
                                 ? 'bg-amber-100 text-amber-900'
-                                : 'bg-teal-100 text-teal-800'
+                                : 'bg-blue-100 text-blue-800'
                             }`}
                           >
                             {n.type === 'private' ? 'Confidential Private' : 'Shared with Client'}
@@ -335,14 +335,14 @@ const ClientDetailModal = ({ isOpen, onClose, clientId, onOpenNoteEditor }) => {
                       </div>
 
                       <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 uppercase">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200 uppercase">
                           {p.status}
                         </span>
                         <a
-                          href={`http://localhost:5000/api/payments/invoice/${p._id}`}
+                          href={`${getBaseURL()}/payments/invoice/${p._id}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="p-1 text-teal-700 hover:bg-teal-50 rounded"
+                          className="p-1 text-blue-700 hover:bg-blue-50 rounded"
                           title="Download GST Tax Invoice PDF"
                         >
                           <Download className="w-4 h-4" />

@@ -110,7 +110,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
             onClick={() => setType('shared')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
               type === 'shared'
-                ? 'bg-teal-600 text-white shadow-xs'
+                ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -129,8 +129,8 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
           </div>
         </div>
       ) : (
-        <div className="p-3 bg-teal-50 rounded-xl border border-teal-200/80 text-xs text-teal-900 flex items-start gap-2">
-          <Share2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
+        <div className="p-3 bg-blue-50 rounded-xl border border-blue-200/80 text-xs text-blue-900 flex items-start gap-2">
+          <Share2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
           <div>
             <span className="font-bold">Client Visibility Notice:</span> This note will be visible to the client in their secure Unfazed portal as shared homework or reflections.
           </div>
@@ -152,7 +152,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               onClick={() => handleTemplateChange(fmt.key)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold border flex items-center gap-1.5 transition-all ${
                 template === fmt.key
-                  ? 'border-teal-600 bg-teal-50 text-teal-800'
+                  ? 'border-blue-600 bg-blue-50 text-blue-800'
                   : 'border-slate-200 text-slate-600 hover:bg-slate-50'
               }`}
             >
@@ -175,7 +175,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder={type === 'private' ? 'e.g. Session 4 - Cognitive Restructuring of Panic Trigger' : 'e.g. Takeaways & Behavioral Anchors for Next Week'}
-          className="w-full px-3.5 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          className="w-full px-3.5 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
         />
       </div>
 
@@ -191,7 +191,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               value={soapFields.subjective}
               onChange={(e) => setSoapFields({ ...soapFields, subjective: e.target.value })}
               placeholder="e.g. Client reports heightened somatic anxiety prior to morning standup meetings..."
-              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -204,7 +204,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               value={soapFields.objective}
               onChange={(e) => setSoapFields({ ...soapFields, objective: e.target.value })}
               placeholder="e.g. Alert, congruent affect, slight psychomotor agitation during recall..."
-              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -217,7 +217,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               value={soapFields.assessment}
               onChange={(e) => setSoapFields({ ...soapFields, assessment: e.target.value })}
               placeholder="e.g. Catastrophic misinterpretation of palpitation symptoms..."
-              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -230,7 +230,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               value={soapFields.plan}
               onChange={(e) => setSoapFields({ ...soapFields, plan: e.target.value })}
               placeholder="e.g. Daily thought record, continuation of box breathing exercise..."
-              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>
@@ -245,7 +245,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               value={dapFields.data}
               onChange={(e) => setDapFields({ ...dapFields, data: e.target.value })}
               placeholder="Clinical session data and behavioral observations..."
-              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -258,7 +258,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               value={dapFields.dapAssessment}
               onChange={(e) => setDapFields({ ...dapFields, dapAssessment: e.target.value })}
               placeholder="Therapeutic evaluation of current coping progress..."
-              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -271,7 +271,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
               value={dapFields.dapPlan}
               onChange={(e) => setDapFields({ ...dapFields, dapPlan: e.target.value })}
               placeholder="Next steps, pacing, and scheduled sessions..."
-              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full p-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>
@@ -284,7 +284,7 @@ const NoteEditor = ({ session, client, initialNote, onSaved, onCancel }) => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Type comprehensive clinical observations, client quotes, cognitive interventions, and reflections here..."
-            className="w-full p-3.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none font-sans leading-relaxed"
+            className="w-full p-3.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none font-sans leading-relaxed"
           />
         </div>
       )}

@@ -96,10 +96,10 @@ const CheckoutForm = ({ isOpen, onClose, therapist, item, itemType = 'session', 
     <Modal isOpen={isOpen} onClose={onClose} title="Secure Checkout & Confirmation" maxWidth="max-w-md">
       <form onSubmit={handlePay} className="space-y-4">
         {/* Item Summary */}
-        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+        <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-200/70">
           <div className="flex justify-between items-start">
             <div>
-              <span className="text-xs font-semibold text-teal-700 uppercase tracking-wide">
+              <span className="text-xs font-bold text-blue-700 uppercase tracking-wide">
                 {itemType === 'package' ? 'Session Package' : 'Individual Consultation'}
               </span>
               <h4 className="font-bold text-slate-900 text-sm mt-0.5">
@@ -108,14 +108,14 @@ const CheckoutForm = ({ isOpen, onClose, therapist, item, itemType = 'session', 
               <p className="text-xs text-slate-500">Therapist: {therapist?.name}</p>
             </div>
             <div className="text-right">
-              <span className="text-lg font-extrabold text-slate-900">₹{amount}</span>
-              <span className="text-[10px] text-slate-400 block">GST Inclusive</span>
+              <span className="text-xl font-extrabold text-slate-900">₹{amount}</span>
+              <span className="text-[10px] text-slate-400 block font-medium">GST Inclusive</span>
             </div>
           </div>
         </div>
 
         {error && (
-          <div className="p-3 bg-rose-50 text-rose-700 text-xs rounded-lg border border-rose-200">
+          <div className="p-3 bg-rose-50 text-rose-700 text-xs rounded-xl border border-rose-200">
             {error}
           </div>
         )}
@@ -128,7 +128,7 @@ const CheckoutForm = ({ isOpen, onClose, therapist, item, itemType = 'session', 
             value={clientDetails.name}
             onChange={(e) => setClientDetails({ ...clientDetails, name: e.target.value })}
             placeholder="e.g. Aarav Mehta"
-            className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
           />
         </div>
 
@@ -141,7 +141,7 @@ const CheckoutForm = ({ isOpen, onClose, therapist, item, itemType = 'session', 
               value={clientDetails.email}
               onChange={(e) => setClientDetails({ ...clientDetails, email: e.target.value })}
               placeholder="aarav@example.com"
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
             />
           </div>
           <div>
@@ -151,7 +151,7 @@ const CheckoutForm = ({ isOpen, onClose, therapist, item, itemType = 'session', 
               value={clientDetails.phone}
               onChange={(e) => setClientDetails({ ...clientDetails, phone: e.target.value })}
               placeholder="+91 98200 11223"
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
             />
           </div>
         </div>
@@ -161,7 +161,7 @@ const CheckoutForm = ({ isOpen, onClose, therapist, item, itemType = 'session', 
             variant="primary"
             type="submit"
             size="lg"
-            className="w-full shadow-md"
+            className="w-full shadow-md shadow-blue-500/25"
             loading={loading}
             icon={CreditCard}
           >
@@ -169,8 +169,8 @@ const CheckoutForm = ({ isOpen, onClose, therapist, item, itemType = 'session', 
           </Button>
         </div>
 
-        <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 pt-1">
-          <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
+        <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500 pt-1 font-medium">
+          <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
           <span>GST Tax Invoice automatically generated upon completion</span>
         </div>
       </form>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../../components/common/Button';
-import { UserPlus, AlertCircle, Sparkles } from 'lucide-react';
+import { UserPlus, AlertCircle } from 'lucide-react';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +53,7 @@ const Register = () => {
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-12">
       <div className="max-w-xl w-full space-y-6">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 bg-teal-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl mx-auto shadow-md">
+          <div className="w-14 h-14 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-2xl flex items-center justify-center font-extrabold text-2xl mx-auto shadow-md shadow-blue-500/25">
             U
           </div>
           <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -64,7 +64,7 @@ const Register = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-6">
+        <div className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-xs space-y-6">
           {error && (
             <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
@@ -85,7 +85,7 @@ const Register = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. Dr. Priya Sharma"
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                 />
               </div>
 
@@ -100,7 +100,7 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="priya@example.com"
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -115,7 +115,7 @@ const Register = () => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                 />
               </div>
 
@@ -130,7 +130,7 @@ const Register = () => {
                   value={formData.sessionFee}
                   onChange={handleChange}
                   placeholder="1500"
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -145,7 +145,7 @@ const Register = () => {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="e.g. Consultant Clinical Psychologist (RCI Reg.)"
-                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
               />
             </div>
 
@@ -159,7 +159,7 @@ const Register = () => {
                 value={formData.specializations}
                 onChange={handleChange}
                 placeholder="Anxiety, CBT, EMDR, Trauma Recovery"
-                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
               />
             </div>
 
@@ -173,7 +173,7 @@ const Register = () => {
                 value={formData.bio}
                 onChange={handleChange}
                 placeholder="A brief overview of your therapeutic container and philosophy..."
-                className="w-full px-3.5 py-2 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                className="w-full px-3.5 py-2 text-xs sm:text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
               />
             </div>
 
@@ -182,7 +182,7 @@ const Register = () => {
               type="submit"
               size="lg"
               loading={loading}
-              className="w-full shadow-md"
+              className="w-full shadow-md shadow-blue-500/25"
               icon={UserPlus}
             >
               Complete Setup & Open Practice
@@ -191,7 +191,7 @@ const Register = () => {
 
           <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
             <span>Already registered?</span>
-            <Link to="/login" className="font-bold text-teal-700 hover:text-teal-800">
+            <Link to="/login" className="font-bold text-blue-700 hover:text-blue-800 transition-colors">
               Sign In to Existing Account →
             </Link>
           </div>

@@ -72,7 +72,7 @@ const Analytics = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-            <BarChart3 className="w-6 h-6 text-teal-600" />
+            <BarChart3 className="w-6 h-6 text-blue-600" />
             <span>Practice Performance Analytics</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -81,7 +81,7 @@ const Analytics = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+          <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200">
             {isAdvanced ? 'Advanced Analytics Enabled' : 'Basic Analytics (Starter)'}
           </span>
         </div>
@@ -94,7 +94,7 @@ const Analytics = () => {
           value={`₹${metrics.totalRevenue?.toLocaleString('en-IN')}`}
           subtitle="Net collected through gateway"
           icon={TrendingUp}
-          color="teal"
+          color="blue"
         />
         <StatCard
           title="Active Caseload"
@@ -115,7 +115,7 @@ const Analytics = () => {
           value={metrics.completionRate}
           subtitle={`${metrics.totalSessions} total scheduled appointments`}
           icon={Calendar}
-          color="emerald"
+          color="sky"
         />
       </div>
 
@@ -130,11 +130,11 @@ const Analytics = () => {
       </div>
 
       {/* Advanced Gated Feature: Weekday Appointment Distribution */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs relative overflow-hidden">
+      <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-7 shadow-xs relative overflow-hidden">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h4 className="font-bold text-slate-900 text-base flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-teal-600" />
+              <Calendar className="w-5 h-5 text-blue-600" />
               <span>Weekday Appointment Volume & Peak Hours</span>
             </h4>
             <p className="text-xs text-slate-500">

@@ -323,10 +323,10 @@ const BookingPage = () => {
 
           {/* Step 2: Intake Form & Digital Consent */}
           {bookingStep === 2 && selectedSlotData && (
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-md space-y-6 animate-in fade-in">
+            <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-8 shadow-xs space-y-6 animate-in fade-in">
               <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                 <div>
-                  <span className="text-xs font-semibold text-teal-600 uppercase tracking-wider">
+                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
                     Step 2 of 2
                   </span>
                   <h4 className="text-lg font-bold text-slate-900">
@@ -334,7 +334,7 @@ const BookingPage = () => {
                   </h4>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs font-bold text-teal-800 bg-teal-50 px-2.5 py-1 rounded-lg">
+                  <span className="text-xs font-bold text-blue-800 bg-blue-50 border border-blue-200/60 px-3 py-1.5 rounded-xl shadow-2xs">
                     {new Date(selectedSlotData.startTime).toLocaleTimeString([], {
                       hour: 'numeric',
                       minute: '2-digit',
@@ -346,7 +346,7 @@ const BookingPage = () => {
               </div>
 
               {bookingError && (
-                <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-lg flex items-center gap-2">
+                <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{bookingError}</span>
                 </div>
@@ -364,7 +364,7 @@ const BookingPage = () => {
                       value={intake.name}
                       onChange={(e) => setIntake({ ...intake, name: e.target.value })}
                       placeholder="e.g. Aarav Mehta"
-                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                     />
                   </div>
 
@@ -378,7 +378,7 @@ const BookingPage = () => {
                       value={intake.email}
                       onChange={(e) => setIntake({ ...intake, email: e.target.value })}
                       placeholder="aarav@example.com"
-                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -394,7 +394,7 @@ const BookingPage = () => {
                       value={intake.phone}
                       onChange={(e) => setIntake({ ...intake, phone: e.target.value })}
                       placeholder="+91 98200 11223"
-                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                     />
                   </div>
                   <div>
@@ -404,7 +404,7 @@ const BookingPage = () => {
                       value={intake.age}
                       onChange={(e) => setIntake({ ...intake, age: e.target.value })}
                       placeholder="e.g. 29"
-                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                     />
                   </div>
                   <div>
@@ -412,7 +412,7 @@ const BookingPage = () => {
                     <select
                       value={intake.gender}
                       onChange={(e) => setIntake({ ...intake, gender: e.target.value })}
-                      className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      className="w-full px-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                     >
                       <option value="female">Female</option>
                       <option value="male">Male</option>
@@ -432,14 +432,14 @@ const BookingPage = () => {
                     value={intake.presentingConcern}
                     onChange={(e) => setIntake({ ...intake, presentingConcern: e.target.value })}
                     placeholder="Briefly describe the challenges, anxiety triggers, or goals you wish to address..."
-                    className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                    className="w-full px-3.5 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all"
                   />
                 </div>
 
                 {/* Digital Telehealth Consent Capture (Auditable Record) */}
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-                  <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                    <FileCheck className="w-4 h-4 text-teal-600" />
+                <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-200/70 space-y-2">
+                  <span className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <FileCheck className="w-4 h-4 text-blue-600" />
                     Telehealth Informed Consent & Medical Confidentiality
                   </span>
                   <p className="text-[11px] text-slate-600 leading-relaxed">
@@ -451,7 +451,7 @@ const BookingPage = () => {
                       id="consentCheck"
                       checked={intake.consentAgreed}
                       onChange={(e) => setIntake({ ...intake, consentAgreed: e.target.checked })}
-                      className="w-4 h-4 text-teal-600 rounded-sm focus:ring-teal-500 border-slate-300 cursor-pointer"
+                      className="w-4 h-4 text-blue-600 rounded-md focus:ring-blue-500 border-slate-300 cursor-pointer"
                     />
                     <label htmlFor="consentCheck" className="text-xs font-bold text-slate-900 cursor-pointer">
                       I agree to the Informed Telehealth Consent and Terms of Practice *
@@ -484,25 +484,25 @@ const BookingPage = () => {
 
           {/* Step 3: Instant Confirmation Screen */}
           {bookingStep === 3 && confirmedBooking && (
-            <div className="bg-white rounded-3xl border border-emerald-200 p-8 shadow-xl text-center space-y-6 animate-in zoom-in-95">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
-                <CheckCircle2 className="w-10 h-10" />
+            <div className="bg-white rounded-3xl border border-blue-200/90 p-8 sm:p-10 shadow-xl shadow-blue-900/5 text-center space-y-6 animate-in zoom-in-95">
+              <div className="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-2xl flex items-center justify-center mx-auto shadow-md shadow-blue-500/25">
+                <CheckCircle2 className="w-9 h-9" />
               </div>
 
               <div>
-                <span className="text-xs font-bold text-emerald-700 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold text-blue-700 uppercase tracking-widest bg-blue-50 border border-blue-200 px-3.5 py-1 rounded-full shadow-2xs">
                   Appointment Confirmed
                 </span>
-                <h4 className="text-2xl font-extrabold text-slate-900 mt-2">
+                <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">
                   You're all set, {confirmedBooking.client.name}!
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1">
+                <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1.5 leading-relaxed">
                   Your session with {therapist.name} has been booked. Confirmation notifications have been dispatched to your email & WhatsApp.
                 </p>
               </div>
 
               {/* Booking Details Card */}
-              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 max-w-lg mx-auto text-left space-y-3 text-xs">
+              <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200 max-w-lg mx-auto text-left space-y-3 text-xs">
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <span className="text-slate-500">Scheduled Time:</span>
                   <span className="font-bold text-slate-900">
@@ -522,7 +522,7 @@ const BookingPage = () => {
 
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <span className="text-slate-500">Tax Invoice Number:</span>
-                  <span className="font-bold text-teal-700">
+                  <span className="font-bold text-blue-700">
                     #{confirmedBooking.invoiceNumber || 'INV-Generated'}
                   </span>
                 </div>
@@ -533,9 +533,9 @@ const BookingPage = () => {
                     href={confirmedBooking.session.meetingLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 font-bold text-teal-700 bg-teal-50 p-2.5 rounded-xl border border-teal-200 hover:bg-teal-100 transition-colors"
+                    className="inline-flex items-center gap-1.5 font-bold text-blue-700 bg-blue-50 p-2.5 rounded-xl border border-blue-200 hover:bg-blue-100 transition-colors"
                   >
-                    <Video className="w-4 h-4" />
+                    <Video className="w-4 h-4 text-blue-600" />
                     <span>{confirmedBooking.session.meetingLink}</span>
                   </a>
                 </div>
@@ -543,19 +543,9 @@ const BookingPage = () => {
 
               {/* Actions */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                <a
-                  href={`http://localhost:5000/api/payments/invoice/${confirmedBooking.payment?._id}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-all"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download GST Invoice PDF</span>
-                </a>
-
                 <Link
                   to="/portal"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-xs font-bold text-white shadow-md transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-xs font-bold text-white shadow-md shadow-blue-500/25 transition-all"
                 >
                   <span>Go to Client Portal</span>
                 </Link>

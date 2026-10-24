@@ -84,12 +84,12 @@ const UpgradePromptModal = ({ isOpen, onClose, featureKey, reason, onUpgradeSucc
                 onClick={() => setSelectedTier(plan.key)}
                 className={`relative p-5 rounded-2xl border-2 cursor-pointer transition-all ${
                   isSelected
-                    ? 'border-teal-600 bg-teal-50/30 shadow-md ring-2 ring-teal-600/20'
+                    ? 'border-blue-600 bg-blue-50/40 shadow-md ring-2 ring-blue-600/20'
                     : 'border-slate-200 hover:border-slate-300 bg-white'
                 }`}
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-4 bg-teal-600 text-white text-xs px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1 shadow-xs">
+                  <span className="absolute -top-3 left-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1 shadow-sm shadow-blue-500/25">
                     <Sparkles className="w-3 h-3" /> Most Popular
                   </span>
                 )}
@@ -106,7 +106,7 @@ const UpgradePromptModal = ({ isOpen, onClose, featureKey, reason, onUpgradeSucc
                 <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
                   {plan.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
-                      <Check className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -125,7 +125,7 @@ const UpgradePromptModal = ({ isOpen, onClose, featureKey, reason, onUpgradeSucc
         {/* Footer actions */}
         <div className="flex items-center justify-between pt-4 border-t border-slate-100">
           <div className="flex items-center gap-1.5 text-xs text-slate-400">
-            <Shield className="w-4 h-4 text-teal-600" />
+            <Shield className="w-4 h-4 text-blue-600" />
             <span>Config-driven entitlement service</span>
           </div>
           <div className="flex gap-2">

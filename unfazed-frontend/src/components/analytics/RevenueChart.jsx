@@ -11,7 +11,7 @@ import {
 
 const RevenueChart = ({ data }) => {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+    <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-4">
       <div className="flex items-center justify-between">
         <div>
           <h4 className="font-bold text-slate-900 text-sm sm:text-base">Practice Revenue Trend</h4>
@@ -32,15 +32,16 @@ const RevenueChart = ({ data }) => {
             <Tooltip
               formatter={(value) => [`₹${value}`, 'Revenue']}
               contentStyle={{
-                backgroundColor: '#1e293b',
+                backgroundColor: '#0f172a',
                 color: '#fff',
-                borderRadius: '8px',
+                borderRadius: '12px',
                 fontSize: '12px',
                 border: 'none',
+                boxShadow: '0 10px 25px -5px rgba(0,0,0,0.2)',
               }}
-              itemStyle={{ color: '#5eead4' }}
+              itemStyle={{ color: '#60a5fa' }}
             />
-            <Bar dataKey="revenue" fill="#0d9488" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="revenue" fill="#2563eb" radius={[8, 8, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

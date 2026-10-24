@@ -114,7 +114,7 @@ const Clients = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-            <Users className="w-6 h-6 text-teal-600" />
+            <Users className="w-6 h-6 text-blue-600" />
             <span>Client Caseload Management</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -124,9 +124,9 @@ const Clients = () => {
 
         <div className="flex items-center gap-3">
           {/* Active client quota badge */}
-          <div className="px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">
+          <div className="px-3.5 py-1.5 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs font-semibold text-slate-700 shadow-2xs">
             Caseload:{' '}
-            <span className="text-teal-700 font-bold">
+            <span className="text-blue-700 font-bold">
               {activeClientsCount} / {maxActiveClients === 999999 ? 'Unlimited' : maxActiveClients}
             </span>
           </div>
@@ -177,7 +177,7 @@ const Clients = () => {
               value={newClient.name}
               onChange={(e) => setNewClient({ ...newClient, name: e.target.value })}
               placeholder="e.g. Vikram Sengupta"
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -189,7 +189,7 @@ const Clients = () => {
               value={newClient.email}
               onChange={(e) => setNewClient({ ...newClient, email: e.target.value })}
               placeholder="vikram@example.com"
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -200,7 +200,7 @@ const Clients = () => {
               value={newClient.phone}
               onChange={(e) => setNewClient({ ...newClient, phone: e.target.value })}
               placeholder="+91 98300 45678"
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
@@ -211,7 +211,7 @@ const Clients = () => {
               value={newClient.tags}
               onChange={(e) => setNewClient({ ...newClient, tags: e.target.value })}
               placeholder="anxiety, weekly, cbt"
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
             />
           </div>
 
